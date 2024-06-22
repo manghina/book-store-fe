@@ -4,7 +4,9 @@
 </template>
 
 <script>
-import Header from './components/Header.vue'
+import Header from './components/Header.vue';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
 
 export default {
   name: 'App',
@@ -21,6 +23,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
