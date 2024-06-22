@@ -1,16 +1,15 @@
 <template>
   <Header></Header>
-  <Dashboard></Dashboard>
+  <RouterView />
 </template>
 
 <script>
-import Dashboard from './components/Dashboard.vue'
 import Header from './components/Header.vue'
 
 export default {
   name: 'App',
   components: {
-    Dashboard, Header
+    Header
   }
 }
 </script>

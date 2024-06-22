@@ -16,17 +16,35 @@
       <Card></Card>
     </div>
   </div>
+
+  <p v-if="books">{{ books }}</p>
 </template>
 
 <script>
 import Card from './common/Card.vue'
+import service from '../services/bookService'
 
 export default {
   name: 'app-dashboard',
     components: {
     Card
-  }
+  },
+  data() {
+    return {
+      books: null,
+    };
+  },
+  mounted() {
+    service.getBooks()
+      .then(response => {
+        this.books = response.data.books;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  },  
 }
+
 </script>
 
 <style scoped>
