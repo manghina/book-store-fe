@@ -10,6 +10,7 @@ const apiClient = await axios.create({
     'X-Requested-With': 'XMLHttpRequest',
   },
 });
+
 /*
 apiClient.interceptors.request.use(config => {
   return config;
@@ -25,7 +26,8 @@ apiClient.interceptors.response.use(response => {
 */
 export default {
   getBooks() {
-    return apiClient.get('/books');
+    // 127.0.0.1:8000/api/books
+    return apiClient.get(baseURL + '/books');
   },
 
   postMessage(data) {

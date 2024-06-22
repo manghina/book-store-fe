@@ -10,6 +10,7 @@
 <script>
 import BooksList from './../components/books/Books.vue';
 import service from '../services/bookService';
+import authService from '../services/authService';
 
 export default {
   name: 'app-dashboard',
@@ -18,26 +19,20 @@ export default {
   },
   data() {
     return {
-      books: [
-        { id: 1, title: "Don't Make Me Think", author: 'Steve Krug', is_in_wishlist:false, price: 1500, originalPrice: 2000, image: 'https://placehold.co/334x200' },
-        { id: 2, title: 'The Dark Tower', author: 'Stephen King', is_in_wishlist:true, price: 999, originalPrice: 2000, image: 'https://placehold.co/334x200' },
-        { id: 3, title: 'The Night Shift', author: 'Stephen King', price: 1999, is_in_wishlist:false, originalPrice: 2000, image: 'https://placehold.co/334x200' },
-        { id: 4, title: 'The Origin', author: 'Dan Brown', price: 170, is_in_wishlist:false, originalPrice: 2000, image: 'https://placehold.co/334x200' },
-        { id: 5, title: 'The Girl in Room 105', author: 'Chetan Bhagat', is_in_wishlist:true, price: 199, originalPrice: 2000, image: 'https://placehold.co/334x200' },
-        { id: 6, title: 'Just After Sunset', author: 'Stephen King', price: 500, is_in_wishlist:false, originalPrice: 2000, image: 'https://placehold.co/334x200' },
-        { id: 7, title: 'Angels and Demons', author: 'Dan Brown', price: 300, originalPrice: 2000, is_in_wishlist:false, image: 'https://placehold.co/334x200' },
-        { id: 8, title: 'Angels and Demons', author: 'Dan Brown', price: 300, originalPrice: 2000, is_in_wishlist:false, image: 'https://placehold.co/334x200' }
-      ]
+      books: [ ]
     }
   },
   mounted() {
-    // this.fetchBooks();
+    this.fetchBooks();
+     const response = authService.login('manghina.dario@gmail.com', '12341234')
+     localStorage.setItem(response.user)
+     console.log("output", response)
   },
   methods: {
     async fetchBooks() {
       try {
         const response = await service.getBooks();
-        this.books = response.data.data; // Adjust if your API response structure is different
+        this.books = response.data.data; 
       } catch (error) {
         console.error('Error fetching books:', error);
       }
