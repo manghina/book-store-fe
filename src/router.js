@@ -1,11 +1,14 @@
 import Dashboard from './components/Dashboard.vue'
 import Users from './components/users/Users.vue'
-import Books from './components/books/Books.vue'
+import BooksTable from './components/books/BookTable.vue'
+import BookForm from './components/books/BookForm.vue'
+import Login from './components/Login.vue'
 
     import { createRouter, createWebHistory } from "vue-router"
     const routeInfos = [
         {
             path : "/",
+            name: 'Dashboard',
             component : Dashboard
         },
         {
@@ -13,8 +16,20 @@ import Books from './components/books/Books.vue'
             component : Users
         },
         {
-            path : "/books",
-            component : Books
+            path : "/books-table",
+            component : BooksTable
+        },
+        {
+            path : "/add-book",
+            component : BookForm
+        },
+        {
+            path : "/add-book/:id",
+            component : BookForm
+        },
+        {
+            path : "/login",
+            component : Login
         }
     ]
     

@@ -1,13 +1,25 @@
 import axios from './apiClient';
+const route = '/book'
 
 export default {
   getBooks() {
-    // 127.0.0.1:8000/api/books
     return axios.get('/books');
   },
 
-  postMessage(data) {
-    return axios.post('/api/message', data);
+  getBook(id) {
+    return axios.get('/book/' + id);
   },
+
+  create(data) {
+    return axios.put('/api' + route, data);
+  },
+
+  update(data) {
+    return axios.post('/api' + route, data);
+  },
+
+  delete(data) {
+    return axios.delete('/api' + route + '/' + data.id);
+  }
 
 };

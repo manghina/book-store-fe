@@ -2,10 +2,15 @@
   <header>
     <nav class="p-2 bg-red-700">
       <div class="container flex items-center justify-between mt-2 mb-1 text-white">
-        <div class="col-3">
+        <div class="col-2">
+          <HamburgerMenu />
+        </div>
+        <div class="col-2">
           <div class="flex items-center">
-            <img src="https://placehold.co/40x40" alt="Logo" class="mr-2">
-            <h4 class="text-xl font-bold">Bookstore</h4>
+            <a href="/">
+              <img src="https://placehold.co/40x40" alt="Logo" class="mr-2">
+              <h4 class="text-xl font-bold">Bookstore</h4>
+            </a>
           </div>
         </div>
         <div class="col-6">
@@ -14,7 +19,7 @@
             <input type="text" placeholder="Search..." class="p-2 pl-3 search-input border-radius-1 w-100">
           </div>
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <ul class="flex justify-end text-center text-right">
             <li class="flex flex-col"><a href="#" class="text-lg"><i class="fa fa-user"></i> <br>Profile</a></li>
             <li  class="flex flex-col"><a href="#" class="text-lg"><i class="fa fa-cart-plus"></i> <br>Cart</a></li>
@@ -26,8 +31,16 @@
 </template>
 
 <script>
+import HamburgerMenu from './common/HamburgerMenu'
 export default {
-  name: 'AppHeader'
+  name: 'AppHeader',
+  components : { HamburgerMenu },
+  data() {
+    const user = JSON.parse(localStorage.getItem('user'))
+    return {
+      isAdmin : user.role === 'admin'
+    }
+  },
 }
 </script>
 
