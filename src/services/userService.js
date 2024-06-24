@@ -1,13 +1,13 @@
 import axios from './apiClient';
-const route = '/book'
+const route = '/user'
 
 export default {
   all() {
-    return axios.get('/books');
+    return axios.get('api' + '/users');
   },
 
   get(id) {
-    return axios.get(route + '/' + id);
+    return axios.get('api' + route + '/' + id);
   },
 
   create(data) {
