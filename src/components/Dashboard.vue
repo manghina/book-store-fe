@@ -10,6 +10,7 @@
 <script>
 import BooksList from './../components/books/Books.vue';
 import service from '../services/bookService';
+import authService from '../services/authService';
 
 export default {
   name: 'app-dashboard',
@@ -23,7 +24,9 @@ export default {
   },
   mounted() {
     this.fetchBooks();
-
+     const response = authService.login('manghina.dario@gmail.com', '12341234')
+     localStorage.setItem(response.user)
+     console.log("output", response)
   },
   methods: {
     async fetchBooks() {
