@@ -1,13 +1,21 @@
-import axios from './apiClient';
+import apiClient from './apiClient';
 
 export default {
+  
   getBooks() {
-    // 127.0.0.1:8000/api/books
-    return axios.get('/books');
+    return apiClient.get('/books');
+  },
+  addbook(data) {
+    return apiClient.put('/api/book', data);
+  },
+  getbook(id) {
+    return apiClient.get(`/api/book/${id}`)
+  },
+  editbook(data) {
+    return apiClient.post('/api/book', data);
   },
 
-  postMessage(data) {
-    return axios.post('/api/message', data);
+  deletebook(id) {
+    return apiClient.delete(`/api/book/${id}`);
   },
-
 };
