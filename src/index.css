@@ -10,4 +10,7 @@
 .featured-icon {
     width: 100px;
     margin: auto;
-  }
+}
+.header-icon {
+    display: flex!important;
+}

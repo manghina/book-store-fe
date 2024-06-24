@@ -49,7 +49,7 @@ export default {
   methods: {
     async fetchBooks() {
       try {
-        const response = await service.getBooks();
+        const response = await service.all();
         this.books = response.data.data; 
       } catch (error) {
         console.error('Error fetching books:', error);

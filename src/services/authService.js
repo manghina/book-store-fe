@@ -1,15 +1,17 @@
-import apiClient from './apiClient';
+import axios from './apiClient';
+import router from '../router'
 
 export default {
-  login(email, password, router) {
-    return apiClient.post('/login', {email, password}).then(res => {
-      const token = res.data.token; // Assuming the server sends back a token
-      localStorage.setItem("token", token); // Store token in localStorage
-      router.push('/')
-    });
+  async login(email, password) {
+    return axios.post('/login', {email, password});
   },
+
   logout(data) {
-    localStorage.removeItem('token');
-    return apiClient.post('/api/logout', data);
+    localStorage.removeItem('user');
+    return axios.post('/api/logout', data)
+    .then(() => {
+      router.replace("/")
+    })  
   },
+
 };

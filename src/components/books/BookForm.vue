@@ -100,7 +100,7 @@ export default {
   methods: {
    async fetchBook(id) {
     try {
-      const response = await service.getBook(id);
+      const response = await service.get(id);
       this.form = response.data.data
     } catch (error) {
       console.error('Error fetching books:', error);
