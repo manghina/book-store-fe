@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Login from "./components/auth/Login.vue";
 
 import { createRouter, createWebHistory } from "vue-router";
@@ -44,3 +45,46 @@ router.beforeEach((to, from, next) => {
 });
 
 export default router;
+=======
+import Dashboard from './components/Dashboard.vue'
+import Users from './components/users/Users.vue'
+import BooksTable from './components/books/BookTable.vue'
+import BookForm from './components/books/BookForm.vue'
+import Login from './components/Login.vue'
+
+    import { createRouter, createWebHistory } from "vue-router"
+    const routeInfos = [
+        {
+            path : "/",
+            name: 'Dashboard',
+            component : Dashboard
+        },
+        {
+            path : "/users",
+            component : Users
+        },
+        {
+            path : "/books-table",
+            component : BooksTable
+        },
+        {
+            path : "/add-book",
+            component : BookForm
+        },
+        {
+            path : "/add-book/:id",
+            component : BookForm
+        },
+        {
+            path : "/login",
+            component : Login
+        }
+    ]
+    
+    const router = createRouter({
+        history : createWebHistory(),
+        routes : routeInfos
+    })
+    
+    export default router;
+>>>>>>> 7364d9715d2a73ba3e3443a3e756de7d27316c01
