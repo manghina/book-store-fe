@@ -8,6 +8,9 @@ export default {
 
   logout(data) {
     localStorage.removeItem('user');
+    localStorage.removeItem('expires_from');
+    localStorage.removeItem('expires_in');
+    localStorage.removeItem('token');
     return axios.post('/api/logout', data)
     .then(() => {
       router.replace("/")

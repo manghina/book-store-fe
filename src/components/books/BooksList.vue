@@ -2,7 +2,7 @@
 <template>
   <div class="pt-2">
     <div class="flex items-center justify-between mb-4">
-      <h2 class="text-xl font-semibold">Books</h2>
+      <h2 class="text-xl font-semibold">La nostra libreria consiglia</h2>
     </div>
     <div class="grid grid-cols-4 gap-4">
       <div v-for="book in books" :key="book.id" class="p-2 text-left border">

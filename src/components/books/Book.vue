@@ -1,16 +1,18 @@
 <template>
     <div class="book-item">
-      <img :src="book.photo" alt="Book cover" class="mb-2">
-      <div class="flex justify-between items-center">
+      <img :src="book.photo" alt="Book cover" class="m-2 m-auto">
+      <div class="pt-4 text-center m-auto">
+      <div class="text-center">
         <h6 class="font-semibold">{{ book.name }}</h6>
       </div>
       <p>di {{ book.author }}</p>
-      <p class="flex justify-between items-center mt-2">
+      <p class="">
         <span class="font-bold text-red-500">{{ book.price }} €</span> &nbsp;
-        <router-link :to="`/view-book/${book.id}`">
-          <button class="px-3 py-1 text-white bg-red-500">Scopri di più <i class="fa-search fa"></i></button>
-        </router-link>
       </p>
+      <router-link :to="`/view-book/${book.id}`">
+        <button class="px-3 py-1 text-white bg-red-500">Scopri di più <i class="fa-search fa"></i></button>
+      </router-link>      
+      </div>
     </div>
 </template>
 <script>

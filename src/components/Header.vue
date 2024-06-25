@@ -1,33 +1,31 @@
 <template>
   <header>
     <nav class="p-2 bg-red-700">
-      <div class="flex items-center justify-between mt-2 mb-1 text-white">
-        <div class="col-2">
-          <HamburgerMenu />
-        </div>
-        <div class="col-2">
-          <div class="flex items-center">
-            <a href="/">
-              <img src="https://placehold.co/40x40" alt="Logo" class="mr-2">
+      <div class="flex justify-between text-white">
+        <div class="flex items-center">
+          <button
+            @click="isOpen = !isOpen"
+            class="items-center px-3 py-2 rounded outline-none text-white"
+          >
+            <svg
+              class="h-8 w-8 fill-current"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M4 6h12v2H4V6zm0 5h12v2H4v-2zm0 5h12v2H4v-2z" />
+            </svg>
+          </button>
+          <div class="">
+            <a href="/" class="flex items-center">            
               <h4 class="text-xl font-bold">Bookstore</h4>
             </a>
           </div>
         </div>
-        <div class="col-6">
-          <div class="flex items-center justify-between ">
-            <span class="search-icon"><i class="fa fa-search"></i></span>
-            <input type="text" placeholder="Search..." class="p-2 pl-3 search-input border-radius-1 w-100">
-          </div>
-        </div>
-        <div class="col-2">
-          <ul class="flex flex-row">
-            <router-link :to="`/profile`">
-              <li class="flex flex-col header-icon"><a href="#" class="text-lg"><i class="fa fa-star"></i> <br>Preferiti</a></li>
-              <li class="flex flex-col header-icon"><a href="#" class="text-lg"><i class="fa fa-user"></i> <br>Profilo</a></li>
-            </router-link>
-              <li v-if="isLogged()" @click="logout()"  class="flex flex-col header-icon"><a href="#" class="text-lg"><i class="fa fa-sign-out"></i> <br>Logout</a></li>
-              <li v-if="!isLogged()" @click="login()"  class="flex flex-col header-icon"><a href="#" class="text-lg"><i class="fa fa-sign-in"></i> <br>Login</a></li>
-          </ul>
+        <div class="flex items-center gap-4">
+            <div class="flex flex-col header-icon"><router-link :to="`#`"><i class="fa fa-star"></i> <br>Preferiti</router-link></div>
+            <div class="flex flex-col header-icon"><router-link :to="`/profile`"><i class="fa fa-user"></i> <br>Profilo</router-link></div>
+            <div v-if="isLogged" @click="logout()"  class="flex flex-col header-icon"><router-link :to="`#`"><i class="fa fa-sign-out"></i> <br>Logout</router-link></div>
+            <div v-if="!isLogged" @click="login()"  class="flex flex-col header-icon"><router-link :to="`#`"><i class="fa fa-sign-in"></i> <br>Login</router-link></div>
         </div>
       </div>
     </nav>
@@ -35,18 +33,24 @@
 </template>
 
 <script>
-import HamburgerMenu from './common/HamburgerMenu'
 import service from '../services/authService';
 import router from '../router'
+//import HamburgerMenu from './common/HamburgerMenu'
 
 export default {
   name: 'AppHeader',
-  components : { HamburgerMenu },
+  components : { /*HamburgerMenu*/ },
   data() {
     const user = JSON.parse(localStorage.getItem('user'))
     return {
-      isAdmin : user && user.role === 'admin'
+      isAdmin : user && user.role === 'admin',
+      isLogged : user !== null
     }
+  },
+  computed : {
+    user() {
+      return this.user
+    }    
   },
   methods : {
     logout() {
@@ -54,9 +58,6 @@ export default {
     },
     login() {
           router.replace("/login")
-    },
-    isLogged() {
-      return localStorage.getItem("user") !== null
     }
   }
 }
