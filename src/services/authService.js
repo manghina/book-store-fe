@@ -14,7 +14,6 @@ export default {
     localStorage.removeItem('token');
     return axios.post('/api/logout', data)
     .then(() => {
-      // router.push("/login")
       window.location.href = '/login';
     })  
   },
