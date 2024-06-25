@@ -44,7 +44,8 @@ export default {
           localStorage.setItem('token', response.data.access_token)
           localStorage.setItem('expires_in', response.data.expires_in)
           localStorage.setItem('expires_from', new Date())
-          this.$router.push({ name: 'Dashboard' });
+          // this.$router.push({ name: 'Dashboard' });
+          window.location.href = '/';
       })
     },
   },

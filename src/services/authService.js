@@ -1,5 +1,6 @@
 import axios from './apiClient';
-import router from '../router'
+
+// import router from '../router'
 
 export default {
   async login(email, password) {
@@ -13,7 +14,7 @@ export default {
     localStorage.removeItem('token');
     return axios.post('/api/logout', data)
     .then(() => {
-      router.replace("/")
+      window.location.href = '/login';
     })  
   },
 
