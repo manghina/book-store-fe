@@ -24,8 +24,8 @@
         <div class="flex items-center gap-4">
             <div class="flex flex-col header-icon"><router-link :to="`#`"><i class="fa fa-star"></i> <br>Preferiti</router-link></div>
             <div class="flex flex-col header-icon"><router-link :to="`/profile`"><i class="fa fa-user"></i> <br>Profilo</router-link></div>
-            <div v-if="isLogged" @click="logout()"  class="flex flex-col header-icon"><router-link :to="`#`"><i class="fa fa-sign-out"></i> <br>Logout</router-link></div>
-            <div v-if="!isLogged" @click="login()"  class="flex flex-col header-icon"><router-link :to="`#`"><i class="fa fa-sign-in"></i> <br>Login</router-link></div>
+            <div v-if="isLogged" @click="logout()"  class="flex flex-col header-icon"><router-link to="/login"><i class="fa fa-sign-out"></i> <br>Logout</router-link></div>
+            <div v-else @click="login()"  class="flex flex-col header-icon"><router-link to="/login"><i class="fa fa-sign-in"></i> <br>Login</router-link></div>
         </div>
       </div>
     </nav>
@@ -47,6 +47,11 @@ export default {
       isLogged : user !== null
     }
   },
+  mounted(){
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.isLogged =  user !== null;
+    console.log('hello user', this.isLogged, user)
+  },
   computed : {
     user() {
       return this.user
@@ -57,7 +62,7 @@ export default {
       service.logout()
     },
     login() {
-          router.replace("/login")
+          router.push("/login")
     }
   }
 }
